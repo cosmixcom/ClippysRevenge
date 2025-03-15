@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Clippy's Revenge",
+  "version": "1.0",
+  "description": "A security extension.",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "48": "images/icon48.png",
+    "128": "images/icon128.png",
+    "500": "images/icon500.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/corrections.js"]
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"]
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/errors.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["static/no.mp3"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
